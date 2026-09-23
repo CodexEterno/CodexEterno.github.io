@@ -7,7 +7,7 @@
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0b0c10;
@@ -16,6 +16,7 @@
             --gold-hover: #f3e5ab;
             --text-color: #e0e0e0;
             --text-muted: #a0a0a0;
+            --border-color: rgba(212, 175, 55, 0.2);
         }
 
         * {
@@ -28,228 +29,479 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
-        h1, h2, h3, .brand {
+        h1, h2, h3, h4, .brand, .category-tag {
             font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        /* Header */
-        header {
-            background: rgba(11, 12, 16, 0.95);
-            padding: 1.5rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        /* Top Bar & Header NatGeo Style */
+        .top-bar {
+            background: #060709;
+            padding: 0.4rem 5%;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .brand {
-            font-size: 1.5rem;
-            color: var(--gold);
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .btn-subscribe {
-            background-color: #cc0000;
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
-        }
-
-        .btn-subscribe:hover {
-            background-color: #ff0000;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 1rem;
-            margin-top: 60px;
-            background: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.95)),
-                        url('https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=1200') center/cover no-repeat;
+        header {
+            background: var(--bg-color);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             border-bottom: 2px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Marco característico de NatGeo estilizado */
+        .natgeo-border {
+            width: 18px;
+            height: 26px;
+            border: 3px solid var(--gold);
+            display: inline-block;
+        }
+
+        .brand {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 800;
+            text-decoration: none;
             text-transform: uppercase;
         }
 
-        .hero p {
-            max-width: 600px;
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
 
-        /* Main Content */
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .btn-subscribe {
+            background-color: var(--gold);
+            color: #000;
+            padding: 0.5rem 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-subscribe:hover {
+            background-color: var(--gold-hover);
+        }
+
+        /* Container General */
         .container {
-            max-width: 1200px;
-            margin: 3rem auto;
+            max-width: 1300px;
+            margin: 2rem auto;
             padding: 0 1.5rem;
         }
 
+        .section-header {
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .section-title {
-            text-align: center;
-            font-size: 2rem;
+            font-size: 1.4rem;
             color: var(--gold);
-            margin-bottom: 2.5rem;
-            position: relative;
+            text-transform: uppercase;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
-            background: var(--gold);
-            margin: 0.5rem auto 0;
-        }
-
-        /* Grid de Videos */
-        .video-grid {
+        /* Section Featured Grid - NatGeo Main Layout */
+        .featured-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 2fr 1fr;
             gap: 2rem;
+            margin-bottom: 3.5rem;
         }
 
-        .video-card {
+        @media (max-width: 900px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Article Main Cover */
+        .main-article {
             background: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
         }
 
-        .video-card:hover {
-            transform: translateY(-5px);
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .article-content {
+            padding: 1.8rem;
+        }
+
+        .category-tag {
+            color: var(--gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .main-article h2 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .main-article p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Sidebar Articles (NatGeo Right Column) */
+        .sidebar-articles {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .side-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .side-card:hover {
             border-color: var(--gold);
         }
 
-        .video-card iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-        }
-
-        .video-info {
-            padding: 1.2rem;
-        }
-
-        .video-info h3 {
+        .side-card h3 {
             font-size: 1.1rem;
             color: #fff;
-            margin-bottom: 0.5rem;
+            margin-top: 0.4rem;
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
         }
 
-        .video-info p {
+        .side-card p {
             font-size: 0.85rem;
             color: var(--text-muted);
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: #060709;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        /* Secondary Grid - Horizontal Stories */
+        .secondary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .story-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .story-card .video-wrapper {
+            padding-bottom: 56.25%;
+        }
+
+        .story-info {
+            padding: 1rem;
+        }
+
+        .story-info h4 {
+            font-size: 1rem;
+            color: #fff;
+            margin: 0.4rem 0;
+            line-height: 1.3;
+        }
+
+        .story-info p {
+            font-size: 0.8rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
         }
 
-        .social-links {
-            margin-bottom: 1rem;
+        /* Footer NatGeo Style */
+        footer {
+            background: #060709;
+            border-top: 2px solid var(--gold);
+            padding: 3rem 5% 1.5rem;
+            margin-top: 4rem;
         }
 
-        .social-links a {
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-about h3 {
             color: var(--gold);
-            font-size: 1.5rem;
-            margin: 0 0.8rem;
-            transition: color 0.3s ease;
+            margin-bottom: 0.8rem;
         }
 
-        .social-links a:hover {
-            color: var(--gold-hover);
+        .footer-about p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            max-width: 400px;
+        }
+
+        .footer-links h4 {
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <a href="#" class="brand"><i class="fa-solid fa-scroll"></i> CODEX ETERNO</a>
-        <a href="https://youtu.be/Ahf2a0sFk_w?si=Mc6WpaINBM-lBB-i" target="_blank" class="btn-subscribe">
-            <i class="fa-brands fa-youtube"></i> Suscribirse
-        </a>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Codex Eterno</h1>
-        <p>Explorando los enigmas de la antigüedad, manuscritos olvidados y los grandes pasajes de la historia universal.</p>
-    </section>
-
-    <!-- Contenido Principal -->
-    <div class="container">
-        <h2 class="section-title">Últimos Documentales</h2>
-        
-        <div class="video-grid">
-            <!-- Tarjeta de Video 1 -->
-            <div class="video-card">
-                <!-- Reemplaza VIDEO_ID_1 por el ID de tu video de YouTube -->
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="YouTube video player" allowfullscreen></iframe>
-                <div class="video-info">
-                    <h3>Título del Documental o Enigma</h3>
-                    <p>Una breve descripción sobre el misterio o pasaje histórico tratado en este video.</p>
-                </div>
-            </div>
-
-            <!-- Tarjeta de Video 2 -->
-            <div class="video-card">
-                <!-- Reemplaza VIDEO_ID_2 por el ID de tu video de YouTube -->
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="YouTube video player" allowfullscreen></iframe>
-                <div class="video-info">
-                    <h3>Título del Documental o Enigma</h3>
-                    <p>Una breve descripción sobre el misterio o pasaje histórico tratado en este video.</p>
-                </div>
-            </div>
-
-            <!-- Tarjeta de Video 3 -->
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/Ahf2a0sFk_w" title="DANIEL | Película completa | El Profeta en el Foso de los Leones" allowfullscreen></iframe>
-                <div class="video-info">
-                    <h3>DANIEL | Película completa | El Profeta en el Foso de los Leones y las Visiones del Fin 4K</h3>
-                    <p>La historia del profeta Daniel: desde el cautiverio en Babilonia y las visiones del fin de los tiempos, hasta el milagro en el foso de los leones.</p>
-                </div>
-            </div>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <span>CODEX ETERNO — HISTORIA, ENIGMAS Y MANUSCRITOS ANTGUS</span>
+        <div>
+            <i class="fa-brands fa-youtube"></i> @codexeternooficial
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="https://youtube.com/@codexeternooficial?si=zjwZNHmzhUjRg_Bz" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    <!-- Header / Navbar estilo NatGeo -->
+    <header>
+        <div class="brand-container">
+            <span class="natgeo-border"></span>
+            <a href="#" class="brand">CODEX ETERNO</a>
         </div>
-        <p>&copy; 2026 Codex Eterno. Todos los derechos reservados.</p>
+
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Manuscritos</a></li>
+            <li><a href="#">Imperios</a></li>
+            <li><a href="#">Enigmas</a></li>
+        </ul>
+
+        <a href="https://youtube.com/@codexeternooficial?si=zjwZNHmzhUjRg_Bz" target="_blank" class="btn-subscribe">
+            Suscribirse
+        </a>
+    </header>
+
+    <div class="container">
+        
+        <!-- Header de Sección Estilo Portal -->
+        <div class="section-header">
+            <span class="natgeo-border" style="height: 18px; width: 12px; border-width: 2px;"></span>
+            <h2 class="section-title">Gran Documental Destacado</h2>
+        </div>
+
+        <!-- Layout Principal Asimétrico (Video Grande + Noticias Laterales) -->
+        <div class="featured-grid">
+            
+            <!-- Noticia / Video Principal (Daniel) -->
+            <article class="main-article">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/Ahf2a0sFk_w" title="DANIEL | Película completa | El Profeta en el Foso de los Leones" allowfullscreen></iframe>
+                </div>
+                <div class="article-content">
+                    <span class="category-tag">Profecías y Antigüedad</span>
+                    <h2>DANIEL | Película completa | El Profeta en el Foso de los Leones y las Visiones del Fin</h2>
+                    <p>
+                        Un análisis profundo sobre la vida del profeta Daniel desde el cautiverio en Babilonia, la caída de imperios legendarios, las visiones proféticas del fin de los tiempos y el milagro histórico en el foso de los leones.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Columna Lateral de Contenidos Secundarios -->
+            <aside class="sidebar-articles">
+                
+                <div class="side-card">
+                    <span class="category-tag">Manuscritos Perdidos</span>
+                    <h3>El Libro de Enoc y los Textos Apócrifos</h3>
+                    <p>Explorando los relatos omitidos de la antigüedad y los misterios custodiados por milenios.</p>
+                </div>
+
+                <div class="side-card">
+                    <span class="category-tag">Estrategias y Batallas</span>
+                    <h3>Las Tácticas Imposibles de Aníbal Barca</h3>
+                    <p>Cómo una estrategia en la batalla de Cannae cambió para siempre la historia del Imperio Romano.</p>
+                </div>
+
+                <div class="side-card">
+                    <span class="category-tag">Enigmas Históricos</span>
+                    <h3>Las Anomalías Antárticas y la Cronología</h3>
+                    <p>Investigando hipótesis y estructuras bajo el hielo que desafían los mapas convencionales.</p>
+                </div>
+
+            </aside>
+        </div>
+
+        <!-- Sección de Artículos Secundarios / Cuadrícula inferior -->
+        <div class="section-header">
+            <span class="natgeo-border" style="height: 18px; width: 12px; border-width: 2px;"></span>
+            <h2 class="section-title">Más Documentales y Relatos</h2>
+        </div>
+
+        <div class="secondary-grid">
+            
+            <!-- Video Secundario 1 -->
+            <div class="story-card">
+                <div class="video-wrapper">
+                    <!-- Reemplaza VIDEO_ID_1 por el ID de otro de tus videos -->
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="YouTube video player" allowfullscreen></iframe>
+                </div>
+                <div class="story-info">
+                    <span class="category-tag">Imperios Clásicos</span>
+                    <h4>El Imperio de Ciro el Grande</h4>
+                    <p>El rey persa que cambió el trato a las naciones conquistadas y redactó el primer cilindro de derechos.</p>
+                </div>
+            </div>
+
+            <!-- Video Secundario 2 -->
+            <div class="story-card">
+                <div class="video-wrapper">
+                    <!-- Reemplaza VIDEO_ID_2 por el ID de otro de tus videos -->
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="YouTube video player" allowfullscreen></iframe>
+                </div>
+                <div class="story-info">
+                    <span class="category-tag">Misterios Bíblicos</span>
+                    <h4>Salmo 91 y el Escudo de Protección</h4>
+                    <p>Origen, contexto histórico y la simbología detrás de una de las oraciones más antiguas.</p>
+                </div>
+            </div>
+
+            <!-- Video Secundario 3 -->
+            <div class="story-card">
+                <div class="video-wrapper">
+                    <!-- Reemplaza VIDEO_ID_3 por el ID de otro de tus videos -->
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="YouTube video player" allowfullscreen></iframe>
+                </div>
+                <div class="story-info">
+                    <span class="category-tag">Crónicas Oscuras</span>
+                    <h4>El Sínodo del Cadáver</h4>
+                    <p>Uno de los juicios más insólitos y oscuros de la Edad Media romana.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer estilo revista editorial -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>CODEX ETERNO</h3>
+                <p>Canal y portal dedicado al estudio minucioso de los pasajes de la historia universal, manuscritos apócrifos y enigmas del mundo antiguo.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Explorar</h4>
+                <ul>
+                    <li><a href="#">Antigüedad</a></li>
+                    <li><a href="#">Manuscritos</a></li>
+                    <li><a href="#">Grandes Líderes</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Canal Oficial</h4>
+                <ul>
+                    <li><a href="https://youtube.com/@codexeternooficial?si=zjwZNHmzhUjRg_Bz" target="_blank">YouTube Channel</a></li>
+                    <li><a href="#">Acerca de</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Codex Eterno. Inspirado en formatos de investigación visual.</p>
+        </div>
     </footer>
 
 </body>
